@@ -7,17 +7,10 @@ import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
+import { cabin } from "./CabinTable";
 
 interface Props {
-  cabinToEdit?: {
-    id: number;
-    name: string;
-    maxCapacity: number;
-    regularPrice: number;
-    discount: number;
-    image: string;
-    description: string;
-  };
+  cabinToEdit?: cabin;
   onCloseModal?: () => void;
 }
 
@@ -65,6 +58,7 @@ function CreateCabinForm({ cabinToEdit, onCloseModal }: Props = {}) {
         {
           onSuccess: () => {
             reset();
+            onCloseModal?.();
           },
         }
       );
