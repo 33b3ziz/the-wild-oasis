@@ -40,7 +40,6 @@ function CreateCabinForm({ cabinToEdit, onCloseModal }: Props = {}) {
   const isWorking = isCreating || isEditing;
 
   function onSubmit(data: FieldValues) {
-    // console.log(data);
     const image = typeof data.image === "string" ? data.image : data.image[0];
     if (isEditSession)
       editCabin(

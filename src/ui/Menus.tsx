@@ -144,7 +144,7 @@ function Button({ children, icon, onClick }: ButtonProps) {
     onClick?.();
     close();
   }
-  console.log(icon);
+  // console.log(icon);
 
   return (
     <li>
