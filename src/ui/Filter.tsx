@@ -54,6 +54,8 @@ function Filter({ filterField, options }: FilterProps) {
     setSearchParams(searchParams);
   }
 
+  console.log(searchParams.get("discount"));
+
   return (
     <StyledFilter>
       {options.map((option) => (

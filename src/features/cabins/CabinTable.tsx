@@ -43,11 +43,13 @@ function CabinTable() {
   const filterValue = searchParams.get("discount") || "all";
 
   let filteredCabins;
-  if (filterValue === "all") filteredCabins = cabins;
-  if (filterValue === "no-discount")
+  if (filterValue === "all") {
+    filteredCabins = cabins;
+  } else if (filterValue === "no-discount") {
     filteredCabins = cabins!.filter((cabin) => cabin.discount === 0);
-  if (filterValue === "with-discount")
+  } else if (filterValue === "with-discount") {
     filteredCabins = cabins!.filter((cabin) => cabin.discount > 0);
+  }
 
   // 2) SORT
   const sortBy = searchParams.get("sortBy") || "name-asc";
