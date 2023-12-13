@@ -6,6 +6,7 @@ import Table from "../../ui/Table";
 
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
+import { Booking } from "./BookingTable";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -34,10 +35,14 @@ const Amount = styled.div`
   font-weight: 500;
 `;
 
+interface BookingRowProps {
+  booking: Booking;
+}
+
 function BookingRow({
   booking: {
-    id: bookingId,
-    created_at,
+    id: bookingID,
+    createdAt,
     startDate,
     endDate,
     numNights,
@@ -47,7 +52,7 @@ function BookingRow({
     guests: { fullName: guestName, email },
     cabins: { name: cabinName },
   },
-}) {
+}: BookingRowProps) {
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",

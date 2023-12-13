@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import styled from "styled-components";
 import { cabin } from "../features/cabins/CabinTable";
+import { Booking } from "../features/bookings/BookingTable";
 
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -105,8 +106,8 @@ function Row({ children }: { children: React.ReactNode }) {
 }
 
 interface BodyProps {
-  data: cabin[] | undefined;
-  render: (cabin: cabin) => React.ReactNode;
+  data: cabin[] | Booking[] | undefined;
+  render: (data: cabin | Booking) => React.ReactNode;
 }
 
 function Body({ data, render }: BodyProps) {
