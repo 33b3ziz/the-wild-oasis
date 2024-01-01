@@ -7,7 +7,7 @@ export async function getBookings({
   sortBy,
 }: {
   filter?: { field: string; value: string; method: string } | null;
-  sortBy?: string;
+  sortBy?: { field: string; direction: string } | null;
 }) {
   try {
     let query = supabase
@@ -17,8 +17,13 @@ export async function getBookings({
       );
 
     // FILTER
-    if (filter !== null) query = query.eq(filter!.field, filter!.value);
+    if (filter) query = query.eq(filter!.field, filter!.value);
 
+    // SORT
+    if (sortBy)
+      query = query.order(sortBy.field, {
+        ascending: sortBy.direction === "asc",
+      });
     const { data, error } = await query;
     if (error) {
       throw new Error("Bookings couldn't be loaded");
