@@ -1,13 +1,25 @@
+import { Booking } from "../features/bookings/BookingTable";
 import { getToday } from "../utils/helpers";
 import supabase from "./supabase";
 
-export async function getBookings() {
+export async function getBookings({
+  filter,
+  sortBy,
+}: {
+  filter?: { field: string; value: string; method: string } | null;
+  sortBy?: string;
+}) {
   try {
-    const { data, error } = await supabase
+    let query = supabase
       .from("bookings")
       .select(
         "id,createdAt,startDate,endDate,numNights,numGuests,status,totalPrice, cabins(name), guests(fullName,email)"
       );
+
+    // FILTER
+    if (filter !== null) query = query.eq(filter!.field, filter!.value);
+
+    const { data, error } = await query;
     if (error) {
       throw new Error("Bookings couldn't be loaded");
     }
@@ -50,7 +62,7 @@ export async function getBookingsAfterDate(date: Date) {
 }
 
 // Returns all STAYS that are were created after the given date
-export async function getStaysAfterDate(date) {
+export async function getStaysAfterDate(date: Date) {
   const { data, error } = await supabase
     .from("bookings")
     // .select('*')
@@ -87,7 +99,7 @@ export async function getStaysTodayActivity() {
   return data;
 }
 
-export async function updateBooking(id, obj) {
+export async function updateBooking(id: number, obj: Booking) {
   const { data, error } = await supabase
     .from("bookings")
     .update(obj)
@@ -102,7 +114,7 @@ export async function updateBooking(id, obj) {
   return data;
 }
 
-export async function deleteBooking(id) {
+export async function deleteBooking(id: number) {
   // REMEMBER RLS POLICIES
   const { data, error } = await supabase.from("bookings").delete().eq("id", id);
 
