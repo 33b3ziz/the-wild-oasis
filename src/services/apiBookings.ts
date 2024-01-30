@@ -115,7 +115,8 @@ export async function getStaysTodayActivity() {
   return data;
 }
 
-export async function updateBooking(id: number, obj: Booking) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function updateBooking(id: number, obj: any) {
   const { data, error } = await supabase
     .from("bookings")
     .update(obj)
