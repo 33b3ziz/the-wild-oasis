@@ -68,7 +68,11 @@ const Guest = styled.div`
   }
 `;
 
-const Price = styled.div`
+interface PriceProps {
+  isPaid: boolean;
+}
+
+const Price = styled.div<PriceProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -102,7 +106,8 @@ const Footer = styled.footer`
 `;
 
 // A purely presentational component
-function BookingDataBox({ booking }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function BookingDataBox({ booking }: any) {
   const {
     created_at,
     startDate,
@@ -178,7 +183,7 @@ function BookingDataBox({ booking }) {
       </Section>
 
       <Footer>
-        <p>Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}</p>
+        <p>Booked {created_at}</p>
       </Footer>
     </StyledBookingDataBox>
   );
