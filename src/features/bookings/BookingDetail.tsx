@@ -27,18 +27,20 @@ function BookingDetail() {
 
   const { status, id } = booking;
 
-  const statusToTagName = {
-    unconfirmed: "blue",
-    "checked-in": "green",
-    "checked-out": "silver",
-  };
+  const statusToTagName = new Map([
+    ["unconfirmed", "blue"],
+    ["checked-in", "green"],
+    ["checked-out", "silver"],
+  ]);
 
   return (
     <>
       <Row type="horizontal">
         <HeadingGroup>
           <Heading as="h1">Booking #{id}</Heading>
-          <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
+          <Tag type={statusToTagName.get(status) as string}>
+            {status.replace("-", " ")}
+          </Tag>
         </HeadingGroup>
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
       </Row>

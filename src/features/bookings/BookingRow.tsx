@@ -58,11 +58,11 @@ function BookingRow({
 }: BookingRowProps) {
   const navigate = useNavigate();
 
-  const statusToTagName = {
-    unconfirmed: "blue",
-    "checked-in": "green",
-    "checked-out": "silver",
-  };
+  const statusToTagName = new Map([
+    ["unconfirmed", "blue"],
+    ["checked-in", "green"],
+    ["checked-out", "silver"],
+  ]);
 
   return (
     <Table.Row>
@@ -86,7 +86,9 @@ function BookingRow({
         </span>
       </Stacked>
 
-      <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
+      <Tag type={statusToTagName.get(status) as string}>
+        {status.replace("-", " ")}
+      </Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
 
