@@ -12,7 +12,6 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
 import { useNavigate } from "react-router-dom";
-import { HiArrowUpOnSquare, HiTrash } from "react-icons/hi2";
 import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
 
@@ -70,11 +69,7 @@ function BookingDetail() {
         )}
 
         {status === "checked-in" && (
-          <Button
-            icon={<HiArrowUpOnSquare />}
-            onClick={() => checkout(id)}
-            disabled={isCheckingOut}
-          >
+          <Button onClick={() => checkout(id)} disabled={isCheckingOut}>
             Check out
           </Button>
         )}
