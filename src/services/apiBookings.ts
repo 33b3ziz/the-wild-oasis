@@ -1,4 +1,3 @@
-import { Booking } from "../features/bookings/BookingTable";
 import { PAGE_SIZE } from "../utils/constants";
 import { getToday } from "../utils/helpers";
 import supabase from "./supabase";

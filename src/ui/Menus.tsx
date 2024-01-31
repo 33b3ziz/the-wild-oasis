@@ -101,7 +101,9 @@ function Toggle({ id }: { id: number }) {
   const { openID, close, open, setPosition } = useContext(MenusContext)!;
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
-    const rect = e.target.closest("button").getBoundingClientRect();
+    const rect = (e.target as HTMLButtonElement)
+      .closest("button")!
+      .getBoundingClientRect();
     setPosition({
       x: window.innerWidth - rect.width - rect.x,
       y: rect.y + rect.height + 8,
@@ -135,9 +137,10 @@ interface ButtonProps {
   children: React.ReactNode;
   icon?: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
-function Button({ children, icon, onClick }: ButtonProps) {
+function Button({ children, icon, onClick, disabled }: ButtonProps) {
   const { close } = useContext(MenusContext)!;
 
   function handleClick() {
@@ -148,7 +151,7 @@ function Button({ children, icon, onClick }: ButtonProps) {
 
   return (
     <li>
-      <StyledButton onClick={handleClick}>
+      <StyledButton onClick={handleClick} disabled={disabled}>
         {icon}
         <span>{children}</span>
       </StyledButton>
