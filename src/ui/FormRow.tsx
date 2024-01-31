@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from "styled-components";
 
 const StyledFormRow = styled.div`
@@ -38,16 +39,16 @@ const Error = styled.span`
 
 interface FormRowProps {
   label?: string;
-  errMsg?: string;
-  children: React.ReactNode & { props: { id: string } };
+  error?: string;
+  children: React.ReactNode;
 }
 
-function FormRow({ label, errMsg, children }: FormRowProps) {
+function FormRow({ label, error, children }: FormRowProps) {
   return (
     <StyledFormRow>
-      {label && <Label htmlFor={children!.props.id}>{label}</Label>}
+      {label && <Label htmlFor={(children! as any).props.id}>{label}</Label>}
       {children}
-      {errMsg && <Error>{errMsg}</Error>}
+      {error && <Error>{error}</Error>}
     </StyledFormRow>
   );
 }
