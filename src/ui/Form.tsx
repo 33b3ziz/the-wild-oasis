@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface FormProps {
-  type: "modal" | "regular";
+  type?: "modal" | "regular";
 }
 
 const Form = styled.form<FormProps>`
