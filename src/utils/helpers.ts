@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { formatDistance, parseISO } from "date-fns";
 import { differenceInDays } from "date-fns/esm";
 
@@ -13,7 +14,7 @@ export const formatDistanceFromNow = (dateStr: string) =>
     .replace("in", "In");
 
 // Supabase needs an ISO date string. However, that string will be different on every render because the MS or SEC have changed, which isn't good. So we use this trick to remove any time
-export const getToday = function (options = {}) {
+export const getToday = function (options: any = {}) {
   const today = new Date();
 
   // This is necessary to compare with created_at from Supabase, because it it not at 0.0.0.0, so we need to set the date to be END of the day when we compare it with earlier dates
