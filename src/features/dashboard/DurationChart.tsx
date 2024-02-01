@@ -137,7 +137,7 @@ function prepareData(startData: any, stays: any) {
       if (num >= 21) return incArrayValue(arr, "21+ nights");
       return arr;
     }, startData)
-    .filter((obj) => obj.value > 0);
+    .filter((obj: any) => obj.value > 0);
 
   return data;
 }
@@ -164,7 +164,7 @@ function DurationChart({ confirmedStays }: any) {
             cy="50%"
             paddingAngle={3}
           >
-            {data.map((entry) => (
+            {data.map((entry: any) => (
               <Cell
                 fill={entry.color}
                 stroke={entry.color}
