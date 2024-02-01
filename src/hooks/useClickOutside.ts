@@ -10,7 +10,7 @@ function useClickOutside(handler: () => void, listenCapturing = true) {
       }
     };
 
-    document.addEventListener("click", handleClick, true);
+    document.addEventListener("click", handleClick, listenCapturing);
 
     return () =>
       document.removeEventListener("click", handleClick, listenCapturing);
