@@ -54,11 +54,9 @@ interface BookingRowProps {
 function BookingRow({
   booking: {
     id: bookingID,
-    createdAt,
     startDate,
     endDate,
     numNights,
-    numGuests,
     totalPrice,
     status,
     guests: { fullName: guestName, email },

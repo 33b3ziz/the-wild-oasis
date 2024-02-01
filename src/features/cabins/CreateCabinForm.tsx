@@ -72,7 +72,7 @@ function CreateCabinForm({ cabinToEdit, onCloseModal }: Props = {}) {
       onSubmit={handleSubmit(onSubmit, onError)}
       type={onCloseModal ? "modal" : "regular"}
     >
-      <FormRow label="Cabin name" errMsg={errors?.name?.message as string}>
+      <FormRow label="Cabin name" error={errors?.name?.message as string}>
         <Input
           disabled={isWorking}
           type="text"
@@ -85,7 +85,7 @@ function CreateCabinForm({ cabinToEdit, onCloseModal }: Props = {}) {
 
       <FormRow
         label="Maximum Capacity"
-        errMsg={errors?.maxCapacity?.message as string}
+        error={errors?.maxCapacity?.message as string}
       >
         <Input
           disabled={isWorking}
@@ -103,7 +103,7 @@ function CreateCabinForm({ cabinToEdit, onCloseModal }: Props = {}) {
 
       <FormRow
         label="Regular price"
-        errMsg={errors?.regularPrice?.message as string}
+        error={errors?.regularPrice?.message as string}
       >
         <Input
           disabled={isWorking}
@@ -119,7 +119,7 @@ function CreateCabinForm({ cabinToEdit, onCloseModal }: Props = {}) {
         />
       </FormRow>
 
-      <FormRow label="Discount" errMsg={errors?.discount?.message as string}>
+      <FormRow label="Discount" error={errors?.discount?.message as string}>
         <Input
           disabled={isWorking}
           type="number"
@@ -136,7 +136,7 @@ function CreateCabinForm({ cabinToEdit, onCloseModal }: Props = {}) {
 
       <FormRow
         label="Description for website"
-        errMsg={errors?.description?.message as string}
+        error={errors?.description?.message as string}
       >
         <Textarea
           id="description"

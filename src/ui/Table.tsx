@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useContext } from "react";
 import styled from "styled-components";
 import { cabin } from "../features/cabins/CabinTable";
@@ -107,7 +108,7 @@ function Row({ children }: { children: React.ReactNode }) {
 
 interface BodyProps {
   data: cabin[] | Booking[] | undefined;
-  render: (data: cabin | Booking) => React.ReactNode;
+  render: (data: cabin | Booking | any) => React.ReactNode;
 }
 
 function Body({ data, render }: BodyProps) {
