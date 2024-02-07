@@ -26,7 +26,7 @@ const StyledCheckbox = styled.div`
 `;
 
 interface CheckboxProps {
-  checked: boolean;
+  checked?: boolean;
   onChange: () => void;
   disabled?: boolean;
   id: string;

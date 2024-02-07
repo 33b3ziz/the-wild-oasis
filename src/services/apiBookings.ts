@@ -139,3 +139,15 @@ export async function deleteBooking(id: number) {
   }
   return data;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function createBooking(newBooking: any) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .insert([{ ...newBooking }])
+    .select();
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
